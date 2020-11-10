@@ -116,6 +116,13 @@
       <listen type='address'/>
     </graphics>
 {% endif %}
+{% if enable_qemu_agent |bool %}
+    <channel type='unix'>
+      <source mode='bind' path='/var/lib/libvirt/qemu/{{ vm.name }}.agent'/>
+      <target type='virtio' name='org.qemu.guest_agent.0'/>
+      <address type='virtio-serial' controller='0' bus='0' port='1'/>
+    </channel>
+{% endif %}
     <rng model="virtio"><backend model="random">/dev/urandom</backend></rng>
   </devices>
 </domain>

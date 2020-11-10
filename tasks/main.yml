@@ -38,6 +38,7 @@
     autostart: "{{ vm.autostart | default(true) }}"
     enable_vnc: "{{ vm.enable_vnc | default(false) }}"
     enable_spice: "{{ vm.enable_spice | default(false) }}"
+    enable_qemu_agent: "{{ vm.enable_qemu_agent | default(false) }}"
   with_items: "{{ libvirt_vms }}"
   loop_control:
     loop_var: vm
